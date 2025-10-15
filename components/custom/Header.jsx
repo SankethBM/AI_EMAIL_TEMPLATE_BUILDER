@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import { Button } from '../ui/button'
+import SignInButton from './SignInButton'
 
 function Header() {
   return (
@@ -8,7 +9,7 @@ function Header() {
         <Image src={'/logo.png'} alt='logo' width={80} height={40} />
         
         <div>
-            <Button className='p-6'>Get Started !</Button>
+            <SignInButton/>
         </div>
     </div>
   )
