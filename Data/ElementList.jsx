@@ -23,12 +23,12 @@ export default [
     url: "#",
     style: {
       textAlign: "center",
-      backgroundColor: "#007bff",
+      backgroundColor: "#FA812F",
       color: "#ffffff",
       padding: "10px",
       width: "auto",
       fontSize: "16px",
-      borderRadius: "0px",
+      borderRadius: "6px",
       fontWeight: "normal",
       objectFit: "contain",
     },
@@ -43,7 +43,7 @@ export default [
     icon: TextSelectionIcon,
     type: "Text",
     label: "Text",
-    textarea: "Sample Text",
+    content: "Sample Text",
     style: {
       backgroundColor: "#fff",
       color: "#000000",
@@ -85,7 +85,7 @@ export default [
     icon: Frame,
     type: "Logo",
     label: "Logo",
-    imageUrl: "/logo.svg",
+    imageUrl: "/logo.png",
     alt: "logo",
     url: "#",
     style: {
@@ -106,7 +106,7 @@ export default [
     icon: PanelTop,
     type: "LogoHeader",
     label: "Logo Header",
-    imageUrl: "/logo.svg",
+    imageUrl: "/logo.png",
     alt: "logo",
     url: "#",
     style: {
@@ -132,11 +132,13 @@ export default [
       color: "#000000",
       padding: "10px",
       width: "100%",
+      
     },
   },
   {
     type: "SocialIcons",
     icon: Twitter,
+    imageUrl:"/twitter.png",
     label: "Social Icons",
     socialIcons: [
       {
