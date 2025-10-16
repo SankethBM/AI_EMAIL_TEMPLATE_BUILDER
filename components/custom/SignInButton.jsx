@@ -42,7 +42,7 @@ function SignInButton() {
 
   return (
     <div>
-      <Button onClick={googleLogin}>Get Started !</Button>
+      <Button onClick={googleLogin} className={'p-6'} >Get Started !</Button>
     </div>
   );
 }

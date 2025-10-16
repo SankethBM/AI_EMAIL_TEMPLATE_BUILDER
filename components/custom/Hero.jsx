@@ -12,7 +12,7 @@ function Hero() {
         <p className='text-center mt-4'>Longing to impress clients with AI powered emails but don't have enough time to build them on your own ? Use the AI powered email templates that already have a generated imagery and copy - save time on email production with us</p>
 
         <div className='flex gap-5 mt-6'>
-            <Button variant='outline'>Try Demo</Button>
+            <Button variant='outline' className='p-6'>Try Demo</Button>
             <SignInButton/>
         </div>
         
