@@ -43,7 +43,7 @@ export default [
     icon: TextSelectionIcon,
     type: "Text",
     label: "Text",
-    content: "Sample Text",
+    textarea: "Sample Text",
     style: {
       backgroundColor: "#fff",
       color: "#000000",
