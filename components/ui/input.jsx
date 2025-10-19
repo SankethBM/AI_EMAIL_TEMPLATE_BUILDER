@@ -1,12 +1,18 @@
-import * as React from "react"
-
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
 function Input({
   className,
-  type,
+  type = "text",
+  value,
   ...props
 }) {
+  // Ensure value is never NaN or undefined
+  const safeValue =
+    value === undefined || (typeof value === "number" && isNaN(value))
+      ? ""
+      : value;
+
   return (
     <input
       type={type}
@@ -17,8 +23,10 @@ function Input({
         "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
         className
       )}
-      {...props} />
+      value={safeValue}
+      {...props}
+    />
   );
 }
 
-export { Input }
+export { Input };

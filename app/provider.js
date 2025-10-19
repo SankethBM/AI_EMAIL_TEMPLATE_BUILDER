@@ -17,14 +17,35 @@ function Provider({ children }) {
   const [selectedElement, setSelectedElement] = useState();
 
   useEffect(() => {
-    if (typeof window !== undefined) {
-      const storage = JSON.parse(localStorage.getItem("userDetail"));
-      const emailTemplateStorage = JSON.parse(
-        localStorage.getItem("emailTemplate")
-      );
-      setEmailTemplate(emailTemplateStorage ?? []);
-      if (!storage?.email || !storage) {
-        //redirect the user for home screen
+    if (typeof window !== "undefined") {
+      // Safely parse userDetail
+      let storage = {};
+      try {
+        storage = JSON.parse(localStorage.getItem("userDetail") || "{}");
+      } catch (err) {
+        console.error("Failed to parse userDetail from localStorage", err);
+        storage = {};
+      }
+
+      // Safely parse emailTemplate
+      let emailTemplateStorage = [];
+      try {
+        emailTemplateStorage = JSON.parse(
+          localStorage.getItem("emailTemplate") || "[]"
+        );
+        if (!Array.isArray(emailTemplateStorage)) {
+          emailTemplateStorage = [];
+        }
+      } catch (err) {
+        console.error("Failed to parse emailTemplate from localStorage", err);
+        emailTemplateStorage = [];
+      }
+
+      setEmailTemplate(emailTemplateStorage);
+
+      // Redirect or set user
+      if (!storage || !storage.email) {
+        // redirect the user to home screen
       } else {
         setUserDetail(storage);
       }
@@ -39,7 +60,6 @@ function Provider({ children }) {
 
   useEffect(() => {
     if (selectedElement) {
-
       let updatedEmailTemplates = [];
 
       emailTemplate.forEach((item, index) => {

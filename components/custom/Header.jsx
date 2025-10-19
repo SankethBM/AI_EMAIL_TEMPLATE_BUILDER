@@ -11,20 +11,24 @@ function Header() {
 
   return (
     <div className="flex justify-between items-center p-4 shadow-sm px-10">
-      <Image src={"/logo.png"} alt="logo" width={80} height={40} />
-
+      <Link href={'/dashboard'}>
+        <div className="flex items-center justify-center">
+          <Image src={"/logo.png"} alt="logo" width={80} height={40} />
+          <h1 className="font-extrabold">LOGO</h1>
+        </div>
+      </Link>
       <div>
         {userDetail?.email ? (
           <div className="flex gap-3 items-center">
-            <Link href={'/dashboard'}>
-              <Button className="p-6">Dashboard</Button>
+            <Link href={"/dashboard"}>
+              <Button className="p-6 cursor-pointer">Dashboard</Button>
             </Link>
             <Image
               src={userDetail?.picture}
               alt="user"
               width={40}
               height={40}
-              className="rounded-full"
+              className="rounded-full cursor-pointer"
             />
           </div>
         ) : (
