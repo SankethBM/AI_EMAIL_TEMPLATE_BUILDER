@@ -17,6 +17,7 @@ import {
   CaseUpper,
 } from "lucide-react";
 import DropDownField from "./Settings/DropDownField";
+import ImagePreview from "./Settings/ImagePreview";
 
 const TextAlignOptions = [
   {
@@ -104,9 +105,37 @@ function Settings() {
     setSelectedElement(updateElement);
   };
 
+  const onHandleOuterStyleChange = (fieldName, fieldValue) => {
+    let updateElement = {
+      ...selectedElement,
+      layout: {
+        ...selectedElement?.layout,
+        [selectedElement?.index]: {
+          ...selectedElement?.layout[selectedElement?.index],
+          outerStyle: {
+            ...selectedElement?.layout[selectedElement?.index]?.outerStyle,
+            [fieldName]: [fieldValue],
+          },
+        },
+      },
+    };
+
+    setSelectedElement(updateElement);
+  };
+
   return (
     <div className=" p-5 flex flex-col gap-5 ">
       <h2 className="font-bold text-xl pb-3">Settings</h2>
+
+      {element?.imageUrl && (
+        <ImagePreview
+          label={"Image Preview"}
+          value={element?.imageUrl}
+          onHandleInputChange={(value) =>
+            onHandleInputChange("imageUrl", value)
+          }
+        />
+      )}
 
       {element?.content && (
         <InputField
@@ -201,6 +230,14 @@ function Settings() {
         />
       )}
 
+      {element?.style?.margin && (
+        <InputStyleField
+          label={"Margin"}
+          value={element?.style?.margin}
+          onHandleStyleChange={(value) => onHandleStyleChange("margin", value)}
+        />
+      )}
+
       {element?.style?.borderRadius && (
         <SliderField
           label={"Border Radius"}
@@ -215,12 +252,36 @@ function Settings() {
         <DropDownField
           label={"Font Weight"}
           value={element?.style?.fontWeight}
-          options={['normal', 'bold']}
+          options={["normal", "bold"]}
           onHandleStyleChange={(value) =>
             onHandleStyleChange("fontWeight", value)
           }
         />
       )}
+
+      <div>
+        <h2 className="font-bold mb-2">Outer Style</h2>
+        {element?.outerStyle?.backgroundColor && (
+          <ColorPickerField
+            label="Background Color"
+            value={element?.outerStyle?.backgroundColor}
+            onHandleStyleChange={(value) =>
+              onHandleOuterStyleChange("backgroundColor", value)
+            }
+          />
+        )}
+
+        {element?.outerStyle?.justifyContent && (
+          <ToggleGroupField
+            label="Align"
+            options={TextAlignOptions}
+            value={element?.outerStyle?.justifyContent}
+            onHandleStyleChange={(value) =>
+              onHandleOuterStyleChange("justifyContent", value)
+            }
+          />
+        )}
+      </div>
     </div>
   );
 }

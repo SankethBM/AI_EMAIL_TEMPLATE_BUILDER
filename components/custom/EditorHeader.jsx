@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import { Code, Monitor, Smartphone } from "lucide-react";
 import { useScreenSize } from "@/app/provider";
 
-function EditorHeader() {
+function EditorHeader({ viewHTMLCode }) {
   const { screenSize, setScreenSize } = useScreenSize();
 
   return (
@@ -38,6 +38,7 @@ function EditorHeader() {
         <Button
           variant={"ghost"}
           className="hover:text-[#FA812F] hover:bg-[#FFE6CC] border border-transparent hover:border-1 rounded-md"
+          onClick={() => viewHTMLCode(true)}
         >
           <Code />
         </Button>

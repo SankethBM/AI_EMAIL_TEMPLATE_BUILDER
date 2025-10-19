@@ -43,7 +43,7 @@ function Provider({ children }) {
       let updatedEmailTemplates = [];
 
       emailTemplate.forEach((item, index) => {
-        if (item.id === selectedElement?.layout?.id) {
+        if (item?.id === selectedElement?.layout?.id) {
           updatedEmailTemplates?.push(selectedElement?.layout);
         } else {
           updatedEmailTemplates?.push(item);

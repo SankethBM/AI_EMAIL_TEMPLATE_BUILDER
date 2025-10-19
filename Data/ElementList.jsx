@@ -72,6 +72,7 @@ export default [
       width: "70%",
       margin: "0px",
       borderRadius: "0px",
+      margin: "0px",
     },
     outerStyle: {
       display: "flex",
@@ -132,13 +133,12 @@ export default [
       color: "#000000",
       padding: "10px",
       width: "100%",
-      
     },
   },
   {
     type: "SocialIcons",
     icon: Twitter,
-    imageUrl:"/twitter.png",
+    imageUrl: "/twitter.png",
     label: "Social Icons",
     socialIcons: [
       {

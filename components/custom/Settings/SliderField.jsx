@@ -7,7 +7,7 @@ function SliderField({ label, value, onHandleStyleChange, type = "px" }) {
   };
 
   return (
-    <div>
+    <div className="flex flex-col gap-2">
       <label>{label} ({value}) </label>
       <Slider
         defaultValue={[FormattedValue(value)]}
